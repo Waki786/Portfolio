@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waki Ahmad | Portfolio</title>
+  <style>
+    :root {
+      --bg-color: #fdfdfd;
+      --text-color: #222;
+      --primary: #007acc;
+      --header-bg: linear-gradient(90deg, #007acc, #00bcd4);
+      --accent: #ff6f61;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.15);
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --primary: #00bcd4;
+      --header-bg: linear-gradient(90deg, #333, #555);
+      --card-bg: #1e1e1e;
+      --shadow: rgba(0, 0, 0, 0.5);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.5s ease;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: white;
+      padding: 4rem 1rem 5rem;
+      text-align: center;
+      position: relative;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    header .profile-pic {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 5px solid white;
+      object-fit: cover;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+
+    .education-menu {
+      position: absolute;
+      top: 180px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      padding: 10px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 18px var(--shadow);
+      color: #fff;
+      font-size: 1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .education-menu label {
+      font-weight: bold;
+      margin-bottom: 7px;
+      display: block;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .education-menu select {
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 0.9rem;
+      width: 70%;
+      background: linear-gradient(135deg, #ffffff, #eaeaea);
+      color: #333;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .education-menu select:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #fafafa, #ddd);
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .education-details, .project, .skills li, .contact li, section ul li {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 24px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project:hover, .skills li:hover, .contact li:hover, section ul li:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #333;
+      color: white;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      font-size: 0.95rem;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 30px;
+      left: 260px;
+      padding: 12px 18px;
+      background: #fff;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: background 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: #eee;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      padding: 0.9rem 1.7rem;
+      border: none;
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      margin-top: 14px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #e85c50;
+    }
+
+    .skills-dropdown {
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      width: 100%;
+      background: linear-gradient(135deg, #ffffff, #eaeaea);
+      color: #333;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .skills-dropdown:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #fafafa, #ddd);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+
+
+    <div class="education-menu">
+      <label for="education-select">📚 Education:</label>
+      <select id="education-select" onchange="showEducationDetails()">
+        <option value="">🎓 Select your qualification</option>
+        <option value="mca">📘 MCA, SRM IST (2024-2026)</option>
+        <option value="bsc">📗 B.Sc Mathematics, CM College (2019-2022)</option>
+        <option value="inter">📙 12th Science, SBLC High School (2017-2019)</option>
+        <option value="matric">📕 10th, SBLC High School (2015-2016)</option>
+      </select>
+    </div>
+
+    <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <img src="waki.jpg" alt="Waki Ahmad Photo" class="profile-pic">
+
+    <h1>Waki Ahmad</h1>
+    <p>Data Analytics | Excel | Python | SQL | Power BI</p>
+  </header>
+
+  <section>
+    <div id="education-details" class="education-details"></div>
+  </section>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I'm a passionate data analytics student with hands-on experience in Excel, Power BI, Python, and SQL, aiming to solve real-world business problems using data-driven solutions.</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <select class="skills-dropdown" onchange="showSkillDetails(this)">
+      <option value="">Select Skill Area</option>
+      <option value="excel">Excel</option>
+      <option value="powerbi">Power BI </option>
+      <option value="python">Python </option>
+      <option value="sql">SQL </option>
+    </select>
+    <ul class="skills" id="skills-list" style="display:none;"></ul>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Sales Dashboard (Excel)</h3>
+      <p>Designed interactive dashboards with dynamic charts, slicers, and complex formulas to drive business insights.</p>
+    </div>
+    <div class="project">
+      <h3>Financial Performance Dashboard (Power BI)</h3>
+      <p>Developed an interactive financial dashboard using Power BI to track key business metrics including revenue, expenses, profit margins, and sales trends. Implemented DAX measures for dynamic calculations and used slicers for better user interactivity.</p>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <ul class="contact">
+      <li>Email: <a href="mailto:Sharimmd57@gmail.com">Sharimmd57@gmail.com</a></li>
+      <li>Mobile: <a href="tel:+917369961371">+91 7369961371</a></li>
+      <li>GitHub: <a href="https://github.com/Waki786" target="_blank">github.com/Waki786</a></li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/waki-ahmad-38a306351" target="_blank">linkedin.com/in/waki-ahmad-38a306351</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Waki Ahmad. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function showEducationDetails() {
+      const value = document.getElementById("education-select").value;
+      const details = document.getElementById("education-details");
+
+      let content = "";
+      if (value === "mca") {
+        content = `<h3>MCA (2024-2026)</h3><p><strong>CGPA:</strong> 8.0</p><p><strong>College:</strong> SRM IST, Delhi-NCR Modinagar</p><p><strong>University:</strong> SRM Institute of science and technology</p>`;
+      } else if (value === "bsc") {
+        content = `<h3>B.Sc Mathematics (2019-2022)</h3><p><strong>Percentage:</strong> 74.9%</p><p><strong>College:</strong> CM Science College darbhanga</p><p><strong>University:</strong> Lalit Narayan Mithla university ( LNMU )</p>`;
+      } else if (value === "inter") {
+        content = `<h3>12th Science (2017-2019)</h3><p><strong>Percentage:</strong> 82.6%</p><p><strong>School:</strong> +2 SBLC High School raipur Sitamarhi</p><p><strong>Board:</strong> Bihar School Examination Board</p>`;
+      } else if (value === "matric") {
+        content = `<h3>10th (2015-2016)</h3><p><strong>Percentage:</strong> 42.8%</p><p><strong>School:</strong> +2 SBLC High School Raipur Sitamarhi</p><p><strong>Board:</strong> Bihar School Examination Board</p>`;
+      } else {
+        details.style.display = 'none';
+        return;
+      }
+
+      details.innerHTML = content;
+      details.style.display = 'block';
+    }
+
+    function showSkillDetails(select) {
+      const list = document.getElementById("skills-list");
+      let content = "";
+      if (select.value === "excel") {
+        content = `<li>Excel Advanced: Power Query, Power Pivot, Dynamic Arrays, VBA Automation</li>`;
+      } else if (select.value === "powerbi") {
+        content = `<li>Power BI: DAX, M Language, Custom Visuals, Deployment</li>`;
+      } else if (select.value === "python") {
+        content = `<li>Python: Data Analysis, Visualization with Seaborn & Plotly, Web Scraping</li>`;
+      } else if (select.value === "sql") {
+        content = `<li>SQL: Window Functions, Recursive Queries, Query Optimization</li>`;
+      } else {
+        list.style.display = "none";
+        return;
+      }
+      list.innerHTML = content;
+      list.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
